@@ -1,4 +1,8 @@
-FROM alpine:3.11 as builder
+# -----------------------
+# Stage 1 - Build Jamulus
+# -----------------------
+FROM alpine:3.13 as builder
+RUN echo "--------- Stage 1 - Build Jamulus --------------"
 
 ENV JAMULUS_VERSION 3_6_2
 
@@ -32,10 +36,22 @@ RUN \
    rm -rf /tmp/* && \
    apk del .build-dependencies
 
-FROM alpine:3.11
+# -----------------------
+# Stage 2 - Production
+# -----------------------
+RUN echo "---------  Stage 2 - Production --------------"
+FROM alpine:3.13 
 
 RUN apk add --update --no-cache \
     qt5-qtbase-x11 icu-libs tzdata
+RUN adduser --system --no-create-home jamulus
+USER jamulus
 
 COPY --from=builder /usr/local/bin/Jamulus /usr/local/bin/Jamulus
-ENTRYPOINT ["Jamulus"]
+COPY ./jamulus.service /etc/systemd/system/jamulus.service
+RUN chmod 644 /etc/systemd/system/jamulus.service
+
+# ENTRYPOINT ["Jamulus"]
+# ADD expose
+EXPOSE 22124/udp
+
