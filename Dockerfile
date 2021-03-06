@@ -42,14 +42,26 @@ RUN \
 RUN echo "---------  Stage 2 - Production --------------"
 FROM alpine:3.13 
 
+# More information
 RUN apk add --update --no-cache \
-    qt5-qtbase-x11 icu-libs tzdata
-RUN adduser --system --no-create-home jamulus
-USER jamulus
+    qt5-qtbase-x11 icu-libs tzdata 
+    
 
+RUN adduser --system --no-create-home jamulus
+
+RUN echo "---------  Copy files --------------"
 COPY --from=builder /usr/local/bin/Jamulus /usr/local/bin/Jamulus
 COPY ./jamulus.service /etc/systemd/system/jamulus.service
+RUN ls
+
+RUN echo "---------  Setup service --------------"
+USER root
 RUN chmod 644 /etc/systemd/system/jamulus.service
+# RUN systemctl enable jamulus (does not work in alpine)
+RUN rc-update add jamulus boot
+RUN rc-status --list
+
+USER jamulus
 
 # ENTRYPOINT ["Jamulus"]
 # ADD expose
