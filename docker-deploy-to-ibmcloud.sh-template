@@ -1,10 +1,10 @@
 #!/bin/bash
 
-export APPLICATIONNAME="music"
-export IMAGENAME="tsuedbroecker/jamulusmusic"
-export IMAGETAG="v2"
+export APPLICATIONNAME=""
+export IMAGENAME=""
+export IMAGETAG=""
 export PORT="22124"
-export HOSTNAME="music-tsuedbroecker"
+export HOSTNAME=""
 
 ibmcloud target --cf-api api.eu-de.cf.cloud.ibm.com -o thomas.suedbroecker -s dev -g Default
 ibmcloud cf push $APPLICATIONNAME --docker-image="$IMAGENAME":"$IMAGETAG" --no-start --no-route

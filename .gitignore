@@ -1,0 +1,6 @@
+.DS_Store
+jamulus.service
+
+# bash scripts
+docker-deploy-to-ibmcloud.sh
+docker-build-image.sh

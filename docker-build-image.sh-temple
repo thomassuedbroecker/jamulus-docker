@@ -1,10 +1,10 @@
 #!/bin/bash
 
-export MYIMAGENAME="tsuedbroecker/jamulusmusic"
-export MYTAG="v2"
+export MYIMAGENAME="[REPOSITORY]/[IMAGENAME]"
+export MYTAG="[VERSION]"
 export CONTAINERNAME="music"
-export DOCKER_USER=
-export DOCKER_PASSWORD=
+export DOCKER_USER=[DOCKERNAME]
+export DOCKER_PASSWORD=[PASSWORD]
 
 docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
 docker build -t "$MYIMAGENAME":"$MYTAG" .
