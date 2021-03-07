@@ -1,4 +1,19 @@
 # Jamulus 🎶
+
+---
+
+**UNDER CONSTRUCTION**
+
+I want to deploy the `Jamulus Server` as container to as a `Cloud Foundry App` on `IBM Cloud`.
+
+**Known issues:**
+
+1. Currently I noticed that the `Jamulus Server` doesn't have a `/health` endpoint, which is needed to run the container in container orchestration system like Kubernetes. The impact is that the running Cloud Foundry app will be restarted frequently, because of the missing `/health` endpoint.
+
+2. I want to configure the `Jamulus Server` to run as a service and use a configuration file to configure that service, but currently it doesn't work under `Alpine` as far I figured out until now.
+
+---
+
 [Docker](https://hub.docker.com/repository/docker/grundic/jamulus) configuration for [Jamulus](https://github.com/corrados/jamulus) music server.
 
 The Jamulus software enables musicians to perform real-time jam sessions over the internet. There is one server running the Jamulus server software which collects the audio data from each Jamulus client, mixes the audio data and sends the mix back to each [client](https://sourceforge.net/projects/llcon/files/latest/download).
