@@ -4,7 +4,7 @@
 
 **UNDER CONSTRUCTION**
 
-I want to deploy the `Jamulus Server` as container as a `Cloud Foundry App` to `IBM Cloud` with a `free Lite Account`.
+I want to deploy the `Jamulus Server` as container as a `Cloud Foundry App` to `IBM Cloud` with a `free Lite Account`. Related blog post <https://suedbroecker.net/2020/05/06/run-docker-image-as-a-cloud-foundry-app-on-ibm-cloud/>
 
 **Known issues:**
 
