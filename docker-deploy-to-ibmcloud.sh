@@ -10,6 +10,7 @@ ibmcloud login
 ibmcloud cf install -f
 ibmcloud target --cf-api api.eu-de.cf.cloud.ibm.com
 ibmcloud target -o thomas.suedbroecker -s dev -g Default
+ibmcloud cf set-health-check $APPLICATIONNAME process none
 ibmcloud cf push $APPLICATIONNAME --docker-image="$IMAGENAME":"$IMAGETAG" --no-start --no-route
 A_GUID=$(ibmcloud cf app $APPLICATIONNAME --guid|awk '/[0-9]/{print $1}') 
 echo $A_GUID

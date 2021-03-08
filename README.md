@@ -10,6 +10,8 @@ I want to deploy the `Jamulus Server` as container as a `Cloud Foundry App` to `
 
 1. Currently I noticed that the `Jamulus Server` doesn't have a `/health` endpoint, which is needed to run the container in container orchestration system like Kubernetes. The impact is that the running Cloud Foundry app will be restarted frequently, because of the missing `/health` endpoint.
 
+> Disable health check: <https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html>
+
 2. I want to configure the `Jamulus Server` to run as a service and use a configuration file to configure that service, but currently it doesn't work under `Alpine` as far I figured out until now.
 
 ---
